@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/st_home.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
+    </head>
+    <body>
+        <header>
+            <nav class="sliderbar">
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="P-2" th:href="@{/clientes}">Opción 1</a></li>
+                            <li><a href="#">Opción 2</a></li>
+                            <li><a href="#">Opción 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Proveedores</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Administración</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="contenido">
+            <h1>Bienvenido a mi página con sliderbar</h1>
+            <p>¡Aquí podrás encontrar toda la información que necesitas!</p>
+        </section>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>CLIE_ID</th>
+                        <th>NOMBRE</th>
+                        <th>NOMBRE_PERS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cliente: ${tabla_clientes}">
+                        <td th:text="${cliente.clie_id}">robertp</td>
+                        <td th:text="${cliente.pers_id}">frias</td>
+                        <!-- comment 
+                                            <td th:text="${cliente.nombre}"></td>
+                                            <td th:text="${cliente.pers_id.nombre}">
+                        -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
