@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/st_home.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
+    </head>
+    <body>
+        <header>
+            <nav class="sliderbar">
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="P-2" th:href="@{/clientes}">Op 1</a></li>
+                            <li><a href="#">Op 2</a></li>
+                            <li><a href="#">Op 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/home}">Inicio</a></li>
+                    <li><a th:href="@{/clientes}">Clientes</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Administración</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="contend text-center">
+            <h1 th:text="${saludo}"></h1>
+            <p>¡Aquí podrás encontrar toda la información que necesitas!</p>
+        </section>
+        <div class="container text-center">
+            <div class="text-secondary">
+                <h3 th:if="${clie_id == null}">Añade un cliente aqui en este form</h3>
+                <h3 th:unless="${clie_id == null}">Editando a un cliente aqui en este form</h3>
+            </div>
+            <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post" style="max-width: 600px; margin:0 auto;" >
+                <input type="hidden" th:field="*{clie_id}" th:value="cliente.clie_id">
+                <div class="m-3">
+                    
+                     <div class="form-group row">
+                        <label class="col-form-label col-sm-4">TIPO ESTADO : </label>
+                        <div class="col-sm-8">
+                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                                <th:block th:each="maestra : ${maestraTEstado}">
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
+                                </th:block>
+                            </select>                           
+                        </div>
+                       
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">N° IDENTIFICACION : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{persona.pers_identificacion}" class="form-control" required >   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">NOMBRES : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{persona.pers_nombre}" class="form-control" required >   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">APELLIDOS : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{persona.pers_apellido}" class="form-control" required >   
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">SELECCIONE SEXO : </label>
+                        <div class="col-sm-8">
+                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                                <th:block th:each="maestra : ${maestraTSexo}">
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
+                                </th:block>
+                            </select>                           
+                        </div>
+                       
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">DIRECCION : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{persona.pers_direccion}" class="form-control" >   
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">SELECCIONE SU ROL  : </label>
+                        <div class="col-sm-8">
+                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                                <th:block th:each="maestra : ${maestraTRol}">
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
+                                </th:block>
+                            </select>                           
+                        </div>
+                       
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">EMAIL</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{persona.pers_email}" class="form-control" id="staticEmail" placeholder="email@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">PASSWORD</label>
+                        <div class="col-sm-10">
+                            <input type="password" th:field="*{persona.pers_contrasena}" class="form-control" id="inputPassword" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="text-center p">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
