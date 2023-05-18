@@ -16,9 +16,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <header>
             <nav class="sliderbar">
+                <div class="logo-container">
+                    <img src="/imgs/logo0.png" alt="ME_FRIAS_LOGO">
+                </div>
                 <ul>                    
                     <li><a href="#">Inicio</a></li>
                     <li><a th:href="@{/clientes}">Clientes</a></li>
+
                     <li><a th:href="@{/empleados}">Empleados</a></li>
                     <li><a href="#">Administración</a></li>
                     <li><a href="#">About</a></li>
@@ -41,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <li data-target="#myCarousel" data-slide-to="2"></li>
                 <li data-target="#myCarousel" data-slide-to="3"></li>
                 <li data-target="#myCarousel" data-slide-to="4"></li>
-                
+
             </ol>
 
             <!-- Wrapper for slides -->
@@ -76,11 +80,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </a>
         </div>
 
-        
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('.carousel').carousel({
                     interval: 3000 // Cambia la imagen cada 3 segundos (ajusta el valor según tus necesidades)
                 });
