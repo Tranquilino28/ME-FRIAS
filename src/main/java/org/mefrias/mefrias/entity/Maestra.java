@@ -31,10 +31,10 @@ public class Maestra implements Serializable{
     private String maes_nombrecorto;
 
     @Column( length = 100, nullable = false)
-    private String maes_dependencia;
+    private Integer maes_dependencia;
 
     @Column( length = 100, nullable = false)
-    private String maes_estado;
+    private Integer maes_estado;
 
     public Maestra() {
     }
@@ -45,7 +45,7 @@ public class Maestra implements Serializable{
     
     
 
-    public Maestra(Integer maes_id, String maes_nombrelargo, String maes_nombrecorto, String maes_dependencia, String maes_estado) {
+    public Maestra(Integer maes_id, String maes_nombrelargo, String maes_nombrecorto, Integer maes_dependencia, Integer maes_estado) {
         this.maes_id = maes_id;
         this.maes_nombrelargo = maes_nombrelargo;
         this.maes_nombrecorto = maes_nombrecorto;
@@ -53,7 +53,7 @@ public class Maestra implements Serializable{
         this.maes_estado = maes_estado;
     }
 
-    public Maestra(String maes_nombrelargo, String maes_nombrecorto, String maes_dependencia, String maes_estado) {
+    public Maestra(String maes_nombrelargo, String maes_nombrecorto, Integer maes_dependencia, Integer maes_estado) {
         this.maes_nombrelargo = maes_nombrelargo;
         this.maes_nombrecorto = maes_nombrecorto;
         this.maes_dependencia = maes_dependencia;
@@ -84,19 +84,19 @@ public class Maestra implements Serializable{
         this.maes_nombrecorto = maes_nombreCorto;
     }
 
-    public String getMaes_dependencia() {
+    public Integer getMaes_dependencia() {
         return maes_dependencia;
     }
 
-    public void setMaes_dependencia(String maes_dependencia) {
+    public void setMaes_dependencia(Integer maes_dependencia) {
         this.maes_dependencia = maes_dependencia;
     }
 
-    public String getMaes_estado() {
+    public Integer getMaes_estado() {
         return maes_estado;
     }
 
-    public void setMaes_estado(String maes_estado) {
+    public void setMaes_estado(Integer maes_estado) {
         this.maes_estado = maes_estado;
     }
 

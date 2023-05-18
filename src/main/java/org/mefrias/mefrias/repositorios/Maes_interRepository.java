@@ -17,24 +17,25 @@ import org.springframework.data.repository.query.Param;
 public interface Maes_interRepository extends
         JpaRepository<Maestra, Integer> {
 
-    
     @Query("SELECT tm FROM Maestra tm WHERE tm.maes_dependencia IS NULL")
     List<Maestra> maesTipos();
 
     @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TIROL')")
     List<Maestra> maesTipoRol();
-    
+
     @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TISE')")
     List<Maestra> maesTipoSexo();
-    
+
     @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TIES')")
     List<Maestra> maesTipoEstado();
-    
+
     @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TIID')")
     List<Maestra> maesTipoIdentificasion();
 
-    
- /*   @Query("SELECT m FROM Maestra m WHERE m.maes_dependencia IS NULL")
+    @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TIESP')")
+    List<Maestra> maesTipoEspecialidad();
+
+    /*   @Query("SELECT m FROM Maestra m WHERE m.maes_dependencia IS NULL")
     List<Maestra> findRegistrosPrincipales();
 
     @Query("SELECT t FROM TablaMaestra t WHERE t.maes_dependencia = :dependenciaId")

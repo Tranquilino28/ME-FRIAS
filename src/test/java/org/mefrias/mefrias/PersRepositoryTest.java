@@ -33,7 +33,26 @@ public class PersRepositoryTest {
 
     @Autowired
     private Clie_interRepository clieRepository;
+    
+    @Autowired
+    private Maes_interRepository maesRepository;
+    
+    
+     @Test
+    public void testCrearMaestra() {
+   
+        Maestra maestra = new Maestra(
+                "GERENTE2",
+                "GER",
+                1,
+                17);
+                
+        // ('1122982384','TRANQUILIO','BRITTO','CMSADBLJH6','soviet@gmailcom','frias','20',14,'5',17),
 
+        Maestra maestraguardada = this.maesRepository.save(maestra);
+        assertThat(maestraguardada.getMaes_id()).isGreaterThan(0);
+    }
+    
     @Test
     public void testCrearPersona() {
    
@@ -44,7 +63,7 @@ public class PersRepositoryTest {
                 "cll 15 #00-00",
                 "ROBERTO@GMAIL.COM",
                 "SAFETY",
-                12 ,
+                 20,
                  12,
                  12,
                  12);
@@ -56,4 +75,40 @@ public class PersRepositoryTest {
         assertThat(clienteGuardado.getClie_id()).isGreaterThan(0);
     }
 
+    @Test
+    public void testCrearCliente() {
+        
+        
+        
+        
+        
+        
+        
+   
+        Persona persona = new Persona(
+                90243122,
+                "Manuel",
+                "avellanos",
+                "cll 15 #00-00",
+                "ROBERTO@GMAIL.COM",
+                "SAFETY",
+                 20,
+                 12,
+                 12,
+                 12);
+        // ('1122982384','TRANQUILIO','BRITTO','CMSADBLJH6','soviet@gmailcom','frias','20',14,'5',17),
+
+        
+        this.persRepository.save(persona);
+        
+        Cliente cliente = new Cliente(persona);
+        
+        Cliente clienteGuardado = this.clieRepository.save(cliente);
+        
+        
+        //Persona personaguardada = this.interpersrepository.save(new Persona(90243122,"Manuel","avellanos","cll 15 #00-00"));
+        
+        
+        assertThat(clienteGuardado.getClie_id()).isGreaterThan(0);
+    }
 }

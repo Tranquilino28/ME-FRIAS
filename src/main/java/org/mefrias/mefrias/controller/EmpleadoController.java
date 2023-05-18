@@ -6,9 +6,11 @@ package org.mefrias.mefrias.controller;
 
 import java.util.List;
 import org.mefrias.mefrias.entity.Cliente;
+import org.mefrias.mefrias.entity.Empleado;
 import org.mefrias.mefrias.entity.Maestra;
 import org.mefrias.mefrias.entity.Persona;
 import org.mefrias.mefrias.repositorios.Clie_interRepository;
+import org.mefrias.mefrias.repositorios.Empl_interRepository;
 import org.mefrias.mefrias.repositorios.Maes_interRepository;
 import org.mefrias.mefrias.repositorios.Pers_interRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,10 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author TRANQUILINO-FRIAS
  */
 @Controller
-public class ClienteController {
+public class EmpleadoController {
 
     @Autowired
-    private Clie_interRepository clieRepository;
+    private Empl_interRepository emplRepository;
 
     @Autowired
     private Pers_interRepository persRepository;
@@ -35,34 +37,36 @@ public class ClienteController {
     @Autowired
     private Maes_interRepository maesRepository;
 
-    @GetMapping({"/clientes"})
+    @GetMapping({"/empleados"})
     public String listarPersonas(Model model) {
-        model.addAttribute("title", "ME-FRIAS clientes");
-        model.addAttribute("saludo", "LISTADO DE PERSONAS CLIENTES");
+        model.addAttribute("title", "ME-FRIAS empleados");
+        model.addAttribute("saludo", "LISTADO DE PERSONAS EMPLEADOS");
 
-        List<Cliente> listaCliente = clieRepository.findAll();
-        model.addAttribute("lista_Clientes", listaCliente);
+        List<Empleado> listaEmpleado = emplRepository.findAll();
+        model.addAttribute("lista_empleados", listaEmpleado);
 
-        return "clientes";
+        return "empleados";
     }
 
-    @GetMapping({"/clientes/nuevo"})
+    @GetMapping({"/empleados/nuevo"})
     public String addPersonas(Model model) {
-        model.addAttribute("title", "ME-FRIAS Reg-clie");
-        model.addAttribute("saludo", "AGREGA TANTOS CLIENTES COMO PUEDAS");
+        model.addAttribute("title", "ME-FRIAS Reg-empl");
+        model.addAttribute("saludo", "AGREGA TANTOS EMPLEADOS COMO PUEDAS");
 
         List<Maestra> listaMaesTRol = maesRepository.maesTipoRol();
         List<Maestra> listaMaesTSexo = maesRepository.maesTipoSexo();
         List<Maestra> listaMaesTEstado = maesRepository.maesTipoEstado();
         List<Maestra> listaMaesTIdentificacion = maesRepository.maesTipoIdentificasion();
+        List<Maestra> listaMaesTEspecialidad = maesRepository.maesTipoEspecialidad();
 
         model.addAttribute("maestraTRol", listaMaesTRol);
         model.addAttribute("maestraTSexo", listaMaesTSexo);
         model.addAttribute("maestraTEstado", listaMaesTEstado);
         model.addAttribute("maestraTIdentificasion", listaMaesTIdentificacion);
+        model.addAttribute("maestraTEspecialidad", listaMaesTEspecialidad);
 
-        model.addAttribute("cliente", new Cliente());
-        return "regclientes";
+        model.addAttribute("empleado", new Empleado());
+        return "regempleados";
     }
 
     /*@PostMapping({"/clientes/guardar"})
@@ -72,8 +76,8 @@ public class ClienteController {
         return "redirect:/clientes";
     }
      */
-    @PostMapping("/clientes/guardar")
-    public String saveCliente(Cliente clienteform) {
+    @PostMapping("/empleados/guardar")
+    public String saveEmpleado(Empleado empleadoform) {
         /*/ Verifica si la persona ya existe en la base de datos
         if (persona.getPers_id()!= null) {
             // Persona ya existe, simplemente crea el cliente y guárdalo
@@ -81,30 +85,44 @@ public class ClienteController {
             clieRepository.save(cliente);
         } else {
          */ // Persona es una instancia transitoria, guárdala primero y luego crea el cliente
-        
-        persRepository.save(clienteform.getPersona()); // Guarda la persona en la base de datos
-        
-        clieRepository.save(clienteform);
+
+        persRepository.save(empleadoform.getPersona()); // Guarda la persona en la base de datos
+
+        emplRepository.save(empleadoform);
         //}
 
-        return "redirect:/clientes";
+        return "redirect:/empleados";
     }
 
-    @GetMapping({"/clientes/editar/{clie_id}"})
-    public String mostrarFormularioUpdatingCliente(@PathVariable("clie_id") Integer clie_id, Model model) {
-        Cliente cliente = clieRepository.findById(clie_id).get();
+    @GetMapping({"/empleados/editar/{empl_id}"})
+    public String mostrarFormularioUpdatingEmpleado(@PathVariable("empl_id") Integer empl_id, Model model) {
+        Empleado empleado = emplRepository.findById(empl_id).get();
         //Persona persona = cliente.getPersona();
-        model.addAttribute("cliente", cliente);
-       // model.addAttribute("persona", persona);
 
-        return "regclientes";
+        List<Maestra> listaMaesTRol = maesRepository.maesTipoRol();
+        List<Maestra> listaMaesTSexo = maesRepository.maesTipoSexo();
+        List<Maestra> listaMaesTEstado = maesRepository.maesTipoEstado();
+        List<Maestra> listaMaesTIdentificacion = maesRepository.maesTipoIdentificasion();
+        List<Maestra> listaMaesTEspecialidad = maesRepository.maesTipoEspecialidad();
+
+        model.addAttribute("maestraTRol", listaMaesTRol);
+        model.addAttribute("maestraTSexo", listaMaesTSexo);
+        model.addAttribute("maestraTEstado", listaMaesTEstado);
+        model.addAttribute("maestraTIdentificasion", listaMaesTIdentificacion);
+
+        model.addAttribute("maestraTEspecialidad", listaMaesTEspecialidad);
+
+        model.addAttribute("empleado", empleado);
+        // model.addAttribute("persona", persona);
+
+        return "regempleados";
     }
 
-    @GetMapping({"/clientes/eliminar/{clie_id}"})
-    public String deleteCliente(@PathVariable("clie_id") Integer clie_id, Model model) {
-        clieRepository.deleteById(clie_id);
+    @GetMapping({"/empleados/eliminar/{empl_id}"})
+    public String deleteCliente(@PathVariable("empl_id") Integer empl_id, Model model) {
+        emplRepository.deleteById(empl_id);
 
-        return "redirect:/clientes";
+        return "redirect:/empleados";
     }
 
 }

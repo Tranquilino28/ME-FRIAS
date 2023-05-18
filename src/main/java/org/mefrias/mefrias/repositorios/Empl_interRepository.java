@@ -4,7 +4,7 @@
  */
 package org.mefrias.mefrias.repositorios;
 
-import org.mefrias.mefrias.entity.Persona;
+import org.mefrias.mefrias.entity.Empleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author TRANQUILINO-FRIAS
  */
 
-public interface Inface_personarepositorio extends JpaRepository<Persona,Integer> {
+public interface Empl_interRepository 
+        extends JpaRepository<Empleado,Integer> {
     
 }

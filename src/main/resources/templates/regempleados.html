@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="P-2" th:href="@{/clientes}">Op 1</a></li>
+                            <li><a class="P-2" th:href="@{/empleados}">Op 1</a></li>
                             <li><a href="#">Op 2</a></li>
                             <li><a href="#">Op 3</a></li>
                         </ul>
@@ -39,19 +39,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
         <div class="container text-center">
             <div class="text-secondary">
-                <h3 th:if="${clie_id == null}">Añade un empleado aqui en este form</h3>
-                <h3 th:unless="${clie_id == null}">Editar a un Empleado aqui en este form</h3>
+                <h3 th:if="${empl_id == null}">Añade un cliente aqui en este form</h3>
+                <h3 th:unless="${empl_id == null}">Editando a un cliente aqui en este form</h3>
             </div>
-            <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post" style="max-width: 600px; margin:0 auto;" >
-                <input type="hidden" th:field="*{clie_id}" th:value="cliente.clie_id">
+            <form th:action="@{/empleados/guardar}" th:object="${empleado}" method="post" style="max-width: 600px; margin:0 auto;" >
+                <input type="hidden" th:field="*{empl_id}" th:value="empleado.empl_id">
                 <div class="m-3">
                     
                      <div class="form-group row">
                         <label class="col-form-label col-sm-4">TIPO ESTADO : </label>
                         <div class="col-sm-8">
-                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                            <select id="categoria" name="MAESTRA" value="EMPLEADO">
                                 <th:block th:each="maestra : ${maestraTEstado}">
-                                    <option th:text="${maestra.maes_nombrelargo}" th:field="*{persona.maes_tiid}" th:value="maestra.maes_id"></option>
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
                                 </th:block>
                             </select>                           
                         </div>
@@ -79,7 +79,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">SELECCIONE SEXO : </label>
                         <div class="col-sm-8">
-                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                            <select id="categoria" name="MAESTRA" value="EMPLEADO">
                                 <th:block th:each="maestra : ${maestraTSexo}">
                                     <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
                                 </th:block>
@@ -98,8 +98,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">SELECCIONE SU ROL  : </label>
                         <div class="col-sm-8">
-                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                            <select id="categoria" name="MAESTRA" value="EMPLEADO">
                                 <th:block th:each="maestra : ${maestraTRol}">
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
+                                </th:block>
+                            </select>                           
+                        </div>
+                       
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">SELECCIONE ESPECIALIDAD  : </label>
+                        <div class="col-sm-8">
+                            <select id="categoria" name="MAESTRA" value="EMPLEADO">
+                                <th:block th:each="maestra : ${maestraTEspecialidad}">
                                     <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
                                 </th:block>
                             </select>                           

@@ -1,39 +1,49 @@
 header {
-  background-image: linear-gradient(to right, #FF4F4F, #4F7AFF);
-  background-color: #2d6187;
-  color: #fff;
-  padding: 20px;
+    background-image: linear-gradient(to right, #FF4F4F, #4F7AFF);
+    background-color: #2d6187;
+    color: #fff;
+    padding: 20px;
 }
 
 .sliderbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 900px;
 }
 
 .sliderbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .sliderbar li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 
 .sliderbar a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.3s ease-out;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-out;
 }
 
 .sliderbar a:hover {
-  color: #FFDB58;
+    color: #FFDB58;
+}
+.carousel-inner .item img {
+    max-height: 450px; /* Ajusta la altura máxima deseada */
+    min-height: 450px;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.custom-font {
+    font-family: Arial, sans-serif; 
+    /* Cambia la fuente del texto a Arial */
 }
