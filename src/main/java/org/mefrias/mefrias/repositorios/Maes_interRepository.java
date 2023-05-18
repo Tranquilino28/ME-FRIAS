@@ -34,6 +34,9 @@ public interface Maes_interRepository extends
 
     @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TIESP')")
     List<Maestra> maesTipoEspecialidad();
+    
+    @Query("SELECT t FROM Maestra t WHERE t.maes_dependencia = (SELECT m.maes_id FROM Maestra m WHERE m.maes_nombrecorto = 'TIVE')")
+    List<Maestra> maesTipoVehiculo();
 
     /*   @Query("SELECT m FROM Maestra m WHERE m.maes_dependencia IS NULL")
     List<Maestra> findRegistrosPrincipales();
