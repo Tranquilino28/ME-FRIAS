@@ -1,4 +1,3 @@
-
 header {
     background-image: linear-gradient(to right, #FF4F4F, #4F7AFF);
     background-color: #2d6187;
@@ -50,9 +49,3 @@ header {
 .sliderbar a:hover {
     color: #FFDB58;
 }
-.carousel-inner .item img {
-    max-height: 450px; /* Ajusta la altura máxima deseada */
-    min-height: 450px;
-    margin: 0 auto; /* Centra la imagen horizontalmente */
-}
-

@@ -51,7 +51,7 @@ public class VehiculoController {
     @GetMapping({"/vehiculos/nuevo"})
     public String addVehiculo(Model model) {
         model.addAttribute("title", "ME-FRIAS Reg-empl");
-        model.addAttribute("saludo", "AGREGA TANTOS EMPLEADOS COMO PUEDAS");
+        model.addAttribute("saludo", "AGREGA TANTOS VEHICULOS COMO PUEDAS");
 
        
         List<Maestra> listaMaesTVehiculo = maesRepository.maesTipoVehiculo();
@@ -85,7 +85,7 @@ public class VehiculoController {
         vehiRepository.save(vehiculoform);
         //}
 
-        return "redirect:/Vehiculos";
+        return "redirect:/vehiculos";
     }
 
     @GetMapping({"/vehiculos/editar/{vehi_id}"})

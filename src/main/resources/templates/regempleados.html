@@ -16,19 +16,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <header>
             <nav class="sliderbar">
-                <ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="P-2" th:href="@{/empleados}">Op 1</a></li>
-                            <li><a href="#">Op 2</a></li>
-                            <li><a href="#">Op 3</a></li>
-                        </ul>
-                    </li>
+                <div class="logo-container">
+                    <img src="/imgs/logo0.png" alt="ME_FRIAS_LOGO">
+                </div>
+                <ul>                    
                     <li><a th:href="@{/home}">Inicio</a></li>
                     <li><a th:href="@{/clientes}">Clientes</a></li>
                     <li><a th:href="@{/empleados}">Empleados</a></li>
-                    <li><a href="#">Administración</a></li>
+                    <li><a th:href="@{/vehiculos}">Vehiculos</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>

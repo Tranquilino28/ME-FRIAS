@@ -8,20 +8,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title th:text="${title}"></title>
 
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/st_home.css">
-
+        <link rel="stylesheet" type="text/css" href="/css/st_empleados.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
     </head>
     <body>
         <header>
             <nav class="sliderbar">
-                <ul>
-
+                <div class="logo-container">
+                    <img src="/imgs/logo0.png" alt="ME_FRIAS_LOGO">
+                </div>
+                <ul>                    
                     <li><a th:href="@{/home}">Inicio</a></li>
                     <li><a th:href="@{/clientes}">Clientes</a></li>
-                    <li><a href="#">Empleados</a></li>
-                    <li><a href="#">Administración</a></li>
+                    <li><a th:href="@{/empleados}">Empleados</a></li>
+                    <li><a th:href="@{/vehiculos}">Vehiculos</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>

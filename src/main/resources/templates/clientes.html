@@ -16,19 +16,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <header>
             <nav class="sliderbar">
-                <ul>
-                    
+                <div class="logo-container">
+                    <img src="/imgs/logo0.png" alt="ME_FRIAS_LOGO">
+                </div>
+                <ul>                    
                     <li><a th:href="@{/home}">Inicio</a></li>
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes<span span class="caret"></a>
-                    <ul class="dropdown-menu">
-                            <li><a href="#">Agregar</a></li>
-                            <li><a href="#">Actualizar</a></li>
-                            <li><a href="#"></a>Borrar</li>
-                        </ul>
-                    
-                    </li>
+                    <li><a th:href="@{/clientes}">Clientes</a></li>
                     <li><a th:href="@{/empleados}">Empleados</a></li>
-                    <li><a href="#">Administración</a></li>
+                    <li><a th:href="@{/vehiculos}">Vehiculos</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
@@ -47,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                 <th>CLIE-ID</th>
+                                <th>CLIE-ID</th>
                                 <th>PERS-ID</th>
                                 <th>ROLES</th>
                                 <th>Nº IDENTIFICASION</th>   
@@ -70,7 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <td th:text="${cliente.persona.pers_direccion}"></td>
                                 <td>
                                     <a th:href="@{'/clientes/editar' + '/' + ${cliente.clie_id}}" class='btn btn-info'>EDITAR</a>
-                                &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
                                     <a th:href="@{'/clientes/eliminar' + '/' + ${cliente.clie_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">KILLER</a>
                                 </td>
                             </tr>

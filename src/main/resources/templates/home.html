@@ -20,11 +20,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <img src="/imgs/logo0.png" alt="ME_FRIAS_LOGO">
                 </div>
                 <ul>                    
-                    <li><a href="#">Inicio</a></li>
+                    <li><a th:href="@{/home}">Inicio</a></li>
                     <li><a th:href="@{/clientes}">Clientes</a></li>
-
                     <li><a th:href="@{/empleados}">Empleados</a></li>
-                    <li><a href="#">Vehiculos</a></li>
+                    <li><a th:href="@{/vehiculos}">Vehiculos</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
@@ -37,6 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </section>
             </div>
         </div>
+        
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
