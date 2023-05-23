@@ -14,6 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -21,30 +22,30 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "tabla_empleados")
-public class Empleado implements Serializable{
-    
+public class Empleado implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer empl_id;
-    
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="pers_id")
+    @JoinColumn(name = "pers_id")
     private Persona persona;
 
-    
-    private Integer maes_tiesp;
+    @OneToOne()
+    @JoinColumn(name = "maes_id")
+    private Maestra maes_tiesp;
 
     public Empleado() {
     }
 
-    
-    public Empleado(Integer empl_id, Persona persona, Integer maes_tiesp) {
+    public Empleado(Integer empl_id, Persona persona, Maestra maes_tiesp) {
         this.empl_id = empl_id;
         this.persona = persona;
         this.maes_tiesp = maes_tiesp;
     }
 
-    public Empleado(Persona persona, Integer maes_tiesp) {
+    public Empleado(Persona persona, Maestra maes_tiesp) {
         this.persona = persona;
         this.maes_tiesp = maes_tiesp;
     }
@@ -65,15 +66,15 @@ public class Empleado implements Serializable{
         this.persona = persona;
     }
 
-    public Integer getMaes_piesp() {
+    public Maestra getMaes_tiesp() {
         return maes_tiesp;
     }
 
-    public void setMaes_piesp(Integer maes_tiesp) {
+    public void setMaes_tiesp(Maestra maes_tiesp) {
         this.maes_tiesp = maes_tiesp;
     }
+
     
     
-    
-    private static final long serialVersionUID = 1L;    
+    private static final long serialVersionUID = 1L;
 }

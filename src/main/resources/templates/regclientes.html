@@ -23,7 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <li><a class="P-2" th:href="@{/clientes}">Op 1</a></li>
                             <li><a href="#">Op 2</a></li>
                             <li><a href="#">Op 3</a></li>
-                        </ul>
+                          </ul>
                     </li>
                     <li><a th:href="@{/home}">Inicio</a></li>
                     <li><a th:href="@{/clientes}">Clientes</a></li>
@@ -49,9 +49,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                      <div class="form-group row">
                         <label class="col-form-label col-sm-4">TIPO ESTADO : </label>
                         <div class="col-sm-8">
-                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                            <select id="categoria" name="tipo_estado" >
                                 <th:block th:each="maestra : ${maestraTEstado}">
-                                    <option th:text="${maestra.maes_nombrelargo}" th:field="*{persona.maes_tiid}" th:value="maestra.maes_id"></option>
+                                    <option th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}"></option>
+                                </th:block>
+                            </select>                           
+                        </div>
+                       
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">TIPO IDENTIFICACION : </label>
+                        <div class="col-sm-8">
+                            <select id="categoria" name="tipo_identificacion" >
+                                <th:block th:each="maestra : ${maestraTIdentificacion}">
+                                    <option th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}"></option>
                                 </th:block>
                             </select>                           
                         </div>
@@ -79,9 +90,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">SELECCIONE SEXO : </label>
                         <div class="col-sm-8">
-                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                            <select id="categoria" name="tipo_sexo" >
                                 <th:block th:each="maestra : ${maestraTSexo}">
-                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}"></option>
                                 </th:block>
                             </select>                           
                         </div>
@@ -98,9 +109,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">SELECCIONE SU ROL  : </label>
                         <div class="col-sm-8">
-                            <select id="categoria" name="MAESTRA" value="CLIENTE">
+                            <select id="categoria" name="tipo_rol">
                                 <th:block th:each="maestra : ${maestraTRol}">
-                                    <option th:text="${maestra.maes_nombrelargo}" th:value="maestra.maes_id"></option>
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}"></option>
                                 </th:block>
                             </select>                           
                         </div>

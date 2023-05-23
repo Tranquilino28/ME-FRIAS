@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
@@ -21,12 +20,12 @@ import java.io.Serializable;
  * @author TRANQUILINO-FRIAS
  */
 @Entity
-@Table(name = "tabla_persona")
+@Table(name = "tabla_personas")
 public class Persona implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer pers_id;
+    private int pers_id;
 
     @Column(length = 15, nullable = false)
     private long pers_identificacion;
@@ -46,26 +45,30 @@ public class Persona implements Serializable {
     @Column(length = 100, nullable = false)
     private String pers_contrasena;
 
-    
-    private Integer maes_tiid;
+    @ManyToOne
+    @JoinColumn(name = "maes_tiid",referencedColumnName = "maes_id")
+    private Maestra maes_tiid;
 
-   
-    private Integer maes_tise;
+    @ManyToOne
+    @JoinColumn(name = "maes_tise",referencedColumnName = "maes_id")
+    private Maestra maes_tise;
 
- 
-    private Integer maes_tirol;
+    @ManyToOne
+    @JoinColumn(name = "maes_tirol",referencedColumnName = "maes_id")
+    private Maestra maes_tirol;
 
-    
-    private Integer maes_ties;
+    @ManyToOne
+    @JoinColumn(name = "maes_ties",referencedColumnName = "maes_id")
+    private Maestra maes_ties;
 
     public Persona() {
     }
 
-    public Integer getPers_id() {
+    public int getPers_id() {
         return pers_id;
     }
 
-    public Persona(Integer pers_id, long pers_identificacion, String pers_nombre, String pers_apellido, String pers_direccion, String pers_email, String pers_contrasena, Integer maes_tiid, Integer maes_tise, Integer maes_tirol, Integer maes_ties) {
+    public Persona(int pers_id, long pers_identificacion, String pers_nombre, String pers_apellido, String pers_direccion, String pers_email, String pers_contrasena, Maestra maes_tiid, Maestra maes_tise, Maestra maes_tirol, Maestra maes_ties) {
         this.pers_id = pers_id;
         this.pers_identificacion = pers_identificacion;
         this.pers_nombre = pers_nombre;
@@ -79,7 +82,7 @@ public class Persona implements Serializable {
         this.maes_ties = maes_ties;
     }
 
-    public Persona(long pers_identificacion, String pers_nombre, String pers_apellido, String pers_direccion, String pers_email, String pers_contrasena, Integer maes_tiid, Integer maes_tise, Integer maes_tirol, Integer maes_ties) {
+    public Persona(long pers_identificacion, String pers_nombre, String pers_apellido, String pers_direccion, String pers_email, String pers_contrasena, Maestra maes_tiid, Maestra maes_tise, Maestra maes_tirol, Maestra maes_ties) {
         this.pers_identificacion = pers_identificacion;
         this.pers_nombre = pers_nombre;
         this.pers_apellido = pers_apellido;
@@ -90,10 +93,6 @@ public class Persona implements Serializable {
         this.maes_tise = maes_tise;
         this.maes_tirol = maes_tirol;
         this.maes_ties = maes_ties;
-    }
-
-    public void setPers_id(Integer pers_id) {
-        this.pers_id = pers_id;
     }
 
     public long getPers_identificacion() {
@@ -144,35 +143,35 @@ public class Persona implements Serializable {
         this.pers_contrasena = pers_contrasena;
     }
 
-    public Integer getMaes_tiid() {
+    public Maestra getMaes_tiid() {
         return maes_tiid;
     }
 
-    public void setMaes_tiid(Integer maes_tiid) {
+    public void setMaes_tiid(Maestra maes_tiid) {
         this.maes_tiid = maes_tiid;
     }
 
-    public Integer getMaes_tise() {
+    public Maestra getMaes_tise() {
         return maes_tise;
     }
 
-    public void setMaes_tise(Integer maes_tise) {
+    public void setMaes_tise(Maestra maes_tise) {
         this.maes_tise = maes_tise;
     }
 
-    public Integer getMaes_tirol() {
+    public Maestra getMaes_tirol() {
         return maes_tirol;
     }
 
-    public void setMaes_tirol(Integer maes_tirol) {
+    public void setMaes_tirol(Maestra maes_tirol) {
         this.maes_tirol = maes_tirol;
     }
 
-    public Integer getMaes_ties() {
+    public Maestra getMaes_ties() {
         return maes_ties;
     }
 
-    public void setMaes_ties(Integer maes_ties) {
+    public void setMaes_ties(Maestra maes_ties) {
         this.maes_ties = maes_ties;
     }
 

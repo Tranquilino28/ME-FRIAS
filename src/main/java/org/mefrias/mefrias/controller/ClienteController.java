@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -59,7 +60,7 @@ public class ClienteController {
         model.addAttribute("maestraTRol", listaMaesTRol);
         model.addAttribute("maestraTSexo", listaMaesTSexo);
         model.addAttribute("maestraTEstado", listaMaesTEstado);
-        model.addAttribute("maestraTIdentificasion", listaMaesTIdentificacion);
+        model.addAttribute("maestraTIdentificacion", listaMaesTIdentificacion);
 
         model.addAttribute("cliente", new Cliente());
         return "regclientes";
@@ -73,7 +74,12 @@ public class ClienteController {
     }
      */
     @PostMapping("/clientes/guardar")
-    public String saveCliente(Cliente clienteform) {
+    public String saveCliente(
+            Cliente clienteform,
+            @RequestParam("tipo_estado") Integer clieMaes_ties,
+            @RequestParam("tipo_identificacion") Integer clieMaes_tiid,
+            @RequestParam("tipo_sexo") Integer clieMaes_tise,
+            @RequestParam("tipo_rol") Integer clieMaes_tirol) {
         /*/ Verifica si la persona ya existe en la base de datos
         if (persona.getPers_id()!= null) {
             // Persona ya existe, simplemente crea el cliente y guárdalo
@@ -81,6 +87,10 @@ public class ClienteController {
             clieRepository.save(cliente);
         } else {
          */ // Persona es una instancia transitoria, guárdala primero y luego crea el cliente
+        clienteform.getPersona().setMaes_ties(maesRepository.findById(clieMaes_ties).get());
+        clienteform.getPersona().setMaes_tiid(maesRepository.findById(clieMaes_tiid).get());
+        clienteform.getPersona().setMaes_tise(maesRepository.findById(clieMaes_tise).get());
+        clienteform.getPersona().setMaes_tirol(maesRepository.findById(clieMaes_tirol).get());
         
         persRepository.save(clienteform.getPersona()); // Guarda la persona en la base de datos
         
@@ -93,7 +103,17 @@ public class ClienteController {
     @GetMapping({"/clientes/editar/{clie_id}"})
     public String mostrarFormularioUpdatingCliente(@PathVariable("clie_id") Integer clie_id, Model model) {
         Cliente cliente = clieRepository.findById(clie_id).get();
-        //Persona persona = cliente.getPersona();
+ List<Maestra> listaMaesTRol = maesRepository.maesTipoRol();
+        List<Maestra> listaMaesTSexo = maesRepository.maesTipoSexo();
+        List<Maestra> listaMaesTEstado = maesRepository.maesTipoEstado();
+        List<Maestra> listaMaesTIdentificacion = maesRepository.maesTipoIdentificasion();
+
+        model.addAttribute("maestraTRol", listaMaesTRol);
+        model.addAttribute("maestraTSexo", listaMaesTSexo);
+        model.addAttribute("maestraTEstado", listaMaesTEstado);
+        model.addAttribute("maestraTIdentificacion", listaMaesTIdentificacion);
+       
+//Persona persona = cliente.getPersona();
         model.addAttribute("cliente", cliente);
        // model.addAttribute("persona", persona);
 

@@ -49,9 +49,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <tr>
                                  <th>CLIE-ID</th>
                                 <th>PERS-ID</th>
+                                <th>ROLES</th>
                                 <th>Nº IDENTIFICASION</th>   
                                 <th>NOMBRE</th>
                                 <th>APELLIDO</th> 
+                                <th>SEXO</th>
                                 <th>DIRECCION</th>
                                 <th>OPCION</th>
                             </tr>
@@ -60,9 +62,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <tr th:each="cliente : ${lista_Clientes}">
                                 <td th:text="${cliente.clie_id}"></td>
                                 <td th:text="${cliente.persona.pers_id}"></td>
+                                <td th:text="${cliente.persona.maes_tirol.maes_nombrelargo}"></td>
                                 <td th:text="${cliente.persona.pers_identificacion}"></td>
-                                <td th:text="${cliente.persona.pers_nombre}"></td>
+                                <td th:text="${cliente.persona.pers_nombre}"></td>                                
                                 <td th:text="${cliente.persona.pers_apellido}"></td>
+                                <td th:text="${cliente.persona.maes_tise.maes_nombrecorto}"></td>
                                 <td th:text="${cliente.persona.pers_direccion}"></td>
                                 <td>
                                     <a th:href="@{'/clientes/editar' + '/' + ${cliente.clie_id}}" class='btn btn-info'>EDITAR</a>

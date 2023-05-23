@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -77,7 +78,11 @@ public class EmpleadoController {
     }
      */
     @PostMapping("/empleados/guardar")
-    public String saveEmpleado(Empleado empleadoform) {
+    public String saveEmpleado(
+            Empleado empleadoform,
+            @RequestParam("especialidad") Integer emplMaes_tiesp) {
+
+        //Maestra maestra = maesRepository.findById(emplMaes_tiesp).get();
         /*/ Verifica si la persona ya existe en la base de datos
         if (persona.getPers_id()!= null) {
             // Persona ya existe, simplemente crea el cliente y guárdalo
@@ -85,7 +90,7 @@ public class EmpleadoController {
             clieRepository.save(cliente);
         } else {
          */ // Persona es una instancia transitoria, guárdala primero y luego crea el cliente
-
+        empleadoform.setMaes_tiesp(maesRepository.findById(emplMaes_tiesp).get());
         persRepository.save(empleadoform.getPersona()); // Guarda la persona en la base de datos
 
         emplRepository.save(empleadoform);
@@ -118,11 +123,6 @@ public class EmpleadoController {
         return "regempleados";
     }
 
-    @GetMapping({"/empleados/eliminar/{empl_id}"})
-    public String deleteCliente(@PathVariable("empl_id") Integer empl_id, Model model) {
-        emplRepository.deleteById(empl_id);
-
-        return "redirect:/empleados";
-    }
+    
 
 }

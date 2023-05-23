@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <header>
             <nav class="sliderbar">
                 <ul>
-                    
+
                     <li><a th:href="@{/home}">Inicio</a></li>
                     <li><a th:href="@{/clientes}">Clientes</a></li>
                     <li><a href="#">Empleados</a></li>
@@ -40,13 +40,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                 <th>EMPL-ID</th>
-                                <th>PERS-ID</th>                                
+                                <th>PERS-ID</th>
+                                <th>EMPL-ID</th>                                
+                                <th>TIESP-ID</th>
                                 <th>Nº IDENTIFICASION</th>   
                                 <th>NOMBRE</th>
                                 <th>APELLIDO</th> 
-                                <th>DIRECCION</th>
-                                                                
+                                <th>ESPECIALIDAD</th>                          
                                 <th>OPCION</th>
                             </tr>
                         </thead>
@@ -54,14 +54,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <tr th:each="empleado : ${lista_empleados}">
                                 <td th:text="${empleado.persona.pers_id}"></td>
                                 <td th:text="${empleado.empl_id}"></td>
+                                <td th:text="${empleado.maes_tiesp.maes_id}"></td>
                                 <td th:text="${empleado.persona.pers_identificacion}"></td>
                                 <td th:text="${empleado.persona.pers_nombre}"></td>
                                 <td th:text="${empleado.persona.pers_apellido}"></td>
-                                <td th:text="${empleado.persona.pers_direccion}"></td>
-                               <!-- <td th:text="${empleado.maes_tiesp}"></td> -->
+                                <td th:text="${empleado.maes_tiesp.maes_nombrelargo}"></td>
+
                                 <td>
                                     <a th:href="@{'/empleados/editar' + '/' + ${empleado.empl_id}}" class='btn btn-info'>EDITAR</a>
-                                &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
                                     <a th:href="@{'/empleados/eliminar' + '/' + ${empleado.empl_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">KILLER</a>
                                 </td>
                             </tr>
