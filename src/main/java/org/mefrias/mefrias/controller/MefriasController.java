@@ -42,13 +42,19 @@ public class MefriasController {
         return "home";
     }
 
-   @GetMapping({"/empleados/eliminar/{empl_id}"})
+    @GetMapping({"/empleados/eliminar/{empl_id}"})
     public String deleteCliente(@PathVariable("empl_id") Integer empl_id, Model model) {
         emplRepository.deleteById(empl_id);
 
         return "redirect:/empleados";
     }
 
+    @GetMapping({"/about","info"})
+    public String about(Model model) {
+        model.addAttribute("title", "ME-FRIAS about");
+
+        return "about";
+    }
 
     @PostMapping("/login")
     public String login(@RequestParam("username") Integer username, @RequestParam("password") String password) {
@@ -66,11 +72,11 @@ public class MefriasController {
         Empleado empleado = emplRepository.validar_usuariocontrasena(username, password);
 
         if (empleado != null) {
-            
+
             return true;
         }
 
-               return false;
+        return false;
         //return "admin".equals(username) && "admin123".equals(password);
 
     }

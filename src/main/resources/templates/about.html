@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/st_about.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+
+    </head>
+    <body>
+        <header>
+            <nav class="sliderbar">
+                <div class="logo-container">
+                    <img src="/imgs/logo0.png" alt="ME_FRIAS_LOGO">
+                </div>
+                <ul>                    
+                    <li><a th:href="@{/home}">Inicio</a></li>
+                    <li><a th:href="@{/clientes}">Clientes</a></li>
+                    <li><a th:href="@{/empleados}">Empleados</a></li>
+                    <li><a th:href="@{/vehiculos}">Vehiculos</a></li>
+                    <li><a th:href="@{/about}">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <h2>Nuestra Historia</h2>
+            <p>
+                En Me-Frías, somos una empresa familiar dedicada a brindar servicios
+                electromecánicos de alta calidad para todo tipo de vehículos. Con 
+                años de experiencia en el sector, nos hemos consolidado como una 
+                opción confiable y eficiente para todos tus requerimientos de 
+                mantenimiento y reparación de automóviles.
+            </p>            
+
+            <h2>Nuestra Misión</h2>
+            <p>
+                En Me-Frías, nuestra misión es proporcionar servicios electromecánicos 
+                confiables y de calidad a nuestros clientes. Nos esforzamos por superar 
+                las expectativas y garantizar la satisfacción total en cada interacción.
+            </p>
+
+            <h2>Nuestro Equipo</h2>
+            <p>
+                En Me-Frías contamos con un equipo de profesionales altamente 
+                capacitados y experimentados en el campo electromecánico. Nuestros
+                técnicos y mecánicos son expertos en su área y se esfuerzan por 
+                mantener los más altos estándares de calidad en cada proyecto.
+            </p>
+            
+            <div class="window" id="movableWindow">
+                <h1>Ventana Flotante</h1>
+                <p>Mueve esta ventana haciendo clic y arrastrando con el ratón.</p>
+            </div>
+
+        </div>
+        
+        <footer class="bg-red-copper text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="mb-4">Me-Frías</h4>
+
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#" class="text-white"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="text-white"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="text-white"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="mb-4">Contacto</h4>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-map-marker"></i> Dirección: Calle Principal 123, Ciudad</li>
+                            <li><i class="fa fa-phone"></i> Teléfono: 123-456-7890</li>
+                            <li><i class="fa fa-envelope"></i> Email: info@mefrias.com</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="mb-4">Suscríbete</h4>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" aria-describedby="suscribe-btn">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-light" type="button" id="suscribe-btn">Suscribir</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="/script/sc_about.js"></script>
+    </body>
+</html>
