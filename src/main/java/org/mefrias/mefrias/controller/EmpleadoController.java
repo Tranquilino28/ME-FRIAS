@@ -101,6 +101,8 @@ public class EmpleadoController {
 
     @GetMapping({"/empleados/editar/{empl_id}"})
     public String mostrarFormularioUpdatingEmpleado(@PathVariable("empl_id") Integer empl_id, Model model) {
+        model.addAttribute("title", "ME-FRIAS editar-empleado");
+        
         Empleado empleado = emplRepository.findById(empl_id).get();
         //Persona persona = cliente.getPersona();
 

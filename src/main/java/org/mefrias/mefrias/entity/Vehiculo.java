@@ -20,7 +20,7 @@ import java.io.Serializable;
  * @author TRANQUILINO-FRIAS
  */
 @Entity
-@Table(name = "tabla_vehiculo")
+@Table(name = "tabla_vehiculos")
 public class Vehiculo implements Serializable{
 
     @Id

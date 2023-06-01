@@ -35,9 +35,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div class="container text-center">
             <div class="text-secondary">
                 <h3 th:if="${empl_id == null}">Añade un cliente aqui en este form</h3>
-                <h3 th:unless="${empl_id == null}">Editando a un cliente aqui en este form</h3>
+                <h3 th:unless="${empl_id == null}">Editando a un Empleado aqui en este form</h3>
             </div>
-            <form th:action="@{/empleados/guardar}" th:object="${empleado}" method="post" style="max-width: 600px; margin:0 auto;" >
+            <form class="form-container" th:action="@{/empleados/guardar}" th:object="${empleado}" method="post" style="max-width: 600px; margin:0 auto;" >
                 <input type="hidden" th:field="*{empl_id}" th:value="empleado.empl_id">
                 <div class="m-3">
 
@@ -55,19 +55,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">N° IDENTIFICACION : </label>
                         <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_identificacion}" class="form-control" required >   
+                            <input type="number" th:field="*{persona.pers_identificacion}" class="form-control" oninput="limitarLongitud(this)" required >   
+                            <div id="advertencia" style="color: red; display: none;">El número debe tener máximo 10 dígitos.</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">NOMBRES : </label>
                         <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_nombre}" class="form-control" required >   
+                            <input type="text" th:field="*{persona.pers_nombre}" class="form-control" onkeyup="convertirMayusculas(this)" required >   
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">APELLIDOS : </label>
                         <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_apellido}" class="form-control" required >   
+                            <input type="text" th:field="*{persona.pers_apellido}" class="form-control" onkeyup="convertirMayusculas(this)" required >   
                         </div>
                     </div>
 
@@ -86,7 +87,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">DIRECCION : </label>
                         <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_direccion}" class="form-control" >   
+                            <input type="text" th:field="*{persona.pers_direccion}" class="form-control" onkeyup="convertirMayusculas(this)" >   
                         </div>
                     </div>
 
@@ -114,7 +115,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">EMAIL</label>
                         <div class="col-sm-10">
-                            <input type="text" th:field="*{persona.pers_email}" class="form-control" id="staticEmail" placeholder="email@example.com" required>
+                            <input type="text" th:field="*{persona.pers_email}" class="form-control" id="staticEmail" placeholder="email@example.com" onkeyup="convertirMinusculas(this)" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -129,7 +130,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </form>
         </div>
-
+        <script src="/script/sc_regempleados.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

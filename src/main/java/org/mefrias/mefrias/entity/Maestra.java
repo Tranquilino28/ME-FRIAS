@@ -22,7 +22,7 @@ public class Maestra implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int maes_id;
+    private Integer maes_id;
 
     @Column(length = 150, nullable = false)
     private String maes_nombrelargo;
@@ -31,15 +31,15 @@ public class Maestra implements Serializable{
     private String maes_nombrecorto;
 
     @Column( length = 100, nullable = true)
-    private int maes_dependencia;
+    private Integer maes_dependencia;
 
     @Column( length = 100, nullable = false)
-    private int maes_estado;
+    private Integer maes_estado;
 
     public Maestra() {
     }
 
-    public Maestra(int maes_id, String maes_nombrelargo, String maes_nombrecorto, int maes_dependencia, int maes_estado) {
+    public Maestra(Integer maes_id, String maes_nombrelargo, String maes_nombrecorto, Integer maes_dependencia, Integer maes_estado) {
         this.maes_id = maes_id;
         this.maes_nombrelargo = maes_nombrelargo;
         this.maes_nombrecorto = maes_nombrecorto;
@@ -58,7 +58,7 @@ public class Maestra implements Serializable{
         return maes_id;
     }
 
-    public void setMaes_id(int maes_id) {
+    public void setMaes_id(Integer maes_id) {
         this.maes_id = maes_id;
     }
 
@@ -78,15 +78,15 @@ public class Maestra implements Serializable{
         this.maes_nombrecorto = maes_nombreCorto;
     }
 
-    public int getMaes_dependencia() {
+    public Integer getMaes_dependencia() {
         return maes_dependencia;
     }
 
-    public void setMaes_dependencia(int maes_dependencia) {
+    public void setMaes_dependencia(Integer maes_dependencia) {
         this.maes_dependencia = maes_dependencia;
     }
 
-    public int getMaes_estado() {
+    public Integer getMaes_estado() {
         return maes_estado;
     }
 
