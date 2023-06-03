@@ -9,9 +9,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="/css/st_main_head_foter.css">
-        <link rel="stylesheet" type="text/css" href="/css/st_clientes.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
+        <link rel="stylesheet" type="text/css" href="/css/st_temp.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -28,47 +28,56 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </ul>
             </nav>
         </header>
-        <section class="contenido text-center">
-            <h1 th:text="${saludo}"></h1>
-            <a th:href="@{/clientes/nuevo}"><p>¡Click aqui para añadir nuevos clientes!</p></a>
-        </section>
-        <div class="container text-center">
-            <div>
-                <h1>
-                    LISTADO DE CLIENTES
-                </h1>
-                <br>
-                <div class="contend_table ">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ROLES</th>
-                                <th>Nº IDENTIFICASION</th>   
-                                <th>NOMBRE</th>
-                                <th>APELLIDO</th> 
-                                <th>SEXO</th>
-                                <th>DIRECCION</th>
-                                <th>OPCION</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="cliente : ${lista_Clientes}">                               
-                                <td th:text="${cliente.persona.maes_tirol.maes_nombrelargo}"></td>
-                                <td th:text="${cliente.persona.pers_identificacion}"></td>
-                                <td th:text="${cliente.persona.pers_nombre}"></td>                                
-                                <td th:text="${cliente.persona.pers_apellido}"></td>
-                                <td th:text="${cliente.persona.maes_tise.maes_nombrecorto}"></td>
-                                <td th:text="${cliente.persona.pers_direccion}"></td>
-                                <td>
-                                    <a th:href="@{'/clientes/editar' + '/' + ${cliente.clie_id}}" class='btn btn-info'>EDITAR</a>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <a th:href="@{'/clientes/eliminar' + '/' + ${cliente.clie_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">KILLER</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+
+        <div class="testbox">
+            <h1>Registration</h1>
+
+            <form action="/">
+                <hr>
+                <div class="accounttype">
+                    <input type="radio" value="None" id="radioOne" name="account" checked/>
+                    <label for="radioOne" class="radio" chec>Personal</label>
+                    <input type="radio" value="None" id="radioTwo" name="account" />
+                    <label for="radioTwo" class="radio">Company</label>
                 </div>
-            </div>
+                <hr>
+                <label id="icon" for="name"><i class="icon-envelope "></i></label>
+                <input type="text" name="name" id="name" placeholder="Email" required/>
+                <label id="icon" for="name"><i class="icon-user"></i></label>
+                <input type="text" name="name" id="name" placeholder="Name" required/>
+                <label id="icon" for="name"><i class="icon-shield"></i></label>
+                <input type="password" name="name" id="name" placeholder="Password" required/>
+                
+                
+                <label id="icon" for="name"><i class=""></i></label>
+                <input type="password" name="name" id="name" placeholder="Password" required/>
+                <label id="icon" for="name"><i class="icon-shield"></i></label>
+                <input type="password" name="name" id="name" placeholder="Password" required/>
+                <label id="icon" for="name"><i class="icon-shield"></i></label>
+                <input type="password" name="name" id="name" placeholder="Password" required/>
+                <label id="icon" for="name"><i class="icon-shield"></i></label>
+                <input type="password" name="name" id="name" placeholder="Password" required/>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <div class="gender">
+                    <input type="radio" value="None" id="male" name="gender" checked/>
+                    <label for="male" class="radio" chec>Male</label>
+                    <input type="radio" value="None" id="female" name="gender" />
+                    <label for="female" class="radio">Female</label>
+                </div> 
+                <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
+                <a href="#" class="button">Register</a>
+                
+               
+            </form>
         </div>
 
         <footer>
@@ -142,12 +151,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
 
-
         </footer>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
