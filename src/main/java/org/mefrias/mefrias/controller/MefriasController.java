@@ -33,6 +33,18 @@ public class MefriasController {
 
         return "index";
     }
+    @GetMapping({"/temp", "/t", "temporal"})
+    public String temp(Model model) {
+        model.addAttribute("title", "ME-FRIAS login");
+
+        return "temp";
+    }
+    @GetMapping({"/vehiclientes", "/vc", "vecli"})
+    public String vehiclientes(Model model) {
+        model.addAttribute("title", "ME-FRIAS login");
+
+        return "vehiclientes";
+    }
 
     @GetMapping({"/home", "inicio"})
     public String home(Model model) {

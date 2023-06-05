@@ -8,8 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title th:text="${title}"></title>
 
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/st_regclientes.css">
+        <link rel="stylesheet" type="text/css" href="/css/st_regvehiculos.css">
 
+        <link rel="stylesheet" type="text/css" href="/css/st_main_head_foter.css"> 
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
     </head>
@@ -33,7 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <p>¡Aquí podrás encontrar toda la información que necesitas!</p>
         </section>
 
-        <div class="container text-center">
+        <div class="container text-center testbox">
             <div class="text-secondary">
                 <h3 th:if="${vehi_id == null}">Añade un vehiculo aqui en este form</h3>
                 <h3 th:unless="${vehi_id == null}">Editar a un vehiculo aqui en este form</h3>
@@ -42,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <input type="hidden" th:field="*{vehi_id}" th:value="vehiculo.vehi_id">
                 <div class="m-3">
 
-                    
+
                     <div class="form-group row">
                         <label class="col-form-label col-sm-4">MARCA : </label>
                         <div class="col-sm-8">
@@ -71,7 +73,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 </th:block>
                             </select>                           
                         </div>
-
                     </div>
 
                     <div class="text-center p">
@@ -80,6 +81,78 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </form>
         </div>
+        <footer>
+            <div class="container-footer w-container">
+                <div class="w-row">
+                    <div class="footer-column w-clearfix w-col w-col-4">
+                        <img src="/imgs/logo0.png" alt="" width="40" class="failory-logo-image">
+                        <h3 class="footer-failory-name">ME-FRIAS</h3>
+                        <p class="footer-description-failory">
+                            En MEFRIAS estamos comprometidos en brindarle
+                            la mejor atencion a nuestros clientes y el mejor servicio de mantenimiento 
+                            electromecanico a sus vehiculos <br></p>
+                    </div>
+                    <div class="footer-column w-col w-col-8">
+                        <div class="w-row">
+                            <div class="w-col w-col-8">
+                                <div class="w-row">
+                                    <div class="w-col w-col-7 w-col-small-6 w-col-tiny-7">
+                                        <h3 class="footer-titles">Learn</h3>
+                                        <p class="footer-links">
+                                            <a href="" target="_blank">
+                                                <span class="footer-link">Failed Startups<br>
+                                                </span>
+                                            </a>
+                                            <a href="">
+                                                <span class="footer-link">Successful Startups<br></span>
+                                            </a>
+                                            <a href="">
+                                                <span class="footer-link">Blog</span>
+                                            </a><span><br></span>
+                                            <a href="">
+                                                <span class="footer-link">Entrepreneurial Tools<br></span>
+                                            </a>
+                                            <a href="">
+                                                <span class="footer-link">Startup Cemetery<br></span>
+                                            </a>
+                                            <a href="">
+                                                <span class="footer-link">Podcast</span></a>
+                                            <strong><br></strong>
+                                        </p>
+                                    </div>
+                                    <div class="w-col w-col-5 w-col-small-6 w-col-tiny-5">
+                                        <h3 class="footer-titles">Other</h3>
+                                        <p class="footer-links">
+                                            <a href="">
+                                                <span class="footer-link">Sponsor Us!<br></span>
+                                            </a>
+                                            <a href="">
+                                                <span class="footer-link">Open Startup<br></span>
+                                            </a>
+                                            <a href=""><span class="footer-link"></span></a>
+                                            <a href="">
+                                                <span class="footer-link">Contribute<br></span></a>
+                                            <a href="">
+                                                <span class="footer-link">FAQ</span></a>
+                                            <strong><br></strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column-center-mobile w-col w-col-4">
+                                <h3 class="footer-titles">Siguenos en las Redes Sociales!</h3>
+                                <a href="" target="_blank" class="footer-social-network-icons w-inline-block"><img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbf0a2f2b67e3b3ba079c_Twitter%20Icon.svg" width="20" alt="Twitter icon"></a>
+                                <a href="" target="_blank" class="footer-social-network-icons w-inline-block"><img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbfe70fcf5a0514c5b1da_Instagram%20Icon.svg" width="20" alt="Instagram Icon"></a>
+                                <a href="" target="_blank" class="footer-social-network-icons w-inline-block"><img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbe42e1e6034fdaba46f6_Facebook%20Icon.svg" width="20" alt="Facebook Icon"></a>
+                                <a href="" target="_blank" class="footer-social-network-icons w-inline-block"><img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dc0002f2b676eb4ba0869_LinkedIn%20Icon.svg" width="20" alt="LinkedIn Icon"></a>
+                                <p class="footer-description">Email <a href=""><strong class="link-email-footer">MEFRIAS@MEFRIAS.ORG</strong></a><br></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>

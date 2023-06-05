@@ -8,9 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title th:text="${title}"></title>
 
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/st_empleados.css">
+        <link rel="stylesheet" type="text/css" href="/css/st_vehiculos.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <body>
         <header>
@@ -24,38 +25,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <li><a th:href="@{/empleados}">Empleados</a></li>
                     <li><a th:href="@{/vehiculos}">Vehiculos</a></li>
                     <li><a th:href="@{/about}">About</a></li>
+                   <!-- <li><a th:href="@{/index}">CLOSE AND EXIT</a></li> -->
+                    
                 </ul>
             </nav>
         </header>
         <section class="contenido text-center">
             <h1 th:text="${saludo}"></h1>
-            <a th:href="@{/empleados/nuevo}"><p>¡Click aqui para añadir nuevos empleados!</p></a>
+            <a th:href="@{/vehiculos/nuevo}"><p>¡Click aqui para añadir nuevos vehiculos!</p></a>
         </section>
         <div class="container text-center">
-            <div>               
+            <div>
+                <h1>
+                    LISTADO DE VEHICULOS
+                </h1>
                 <br>
                 <div>
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Nº IDENTIFICASION</th>   
-                                <th>NOMBRE</th>
-                                <th>APELLIDO</th> 
-                                <th>ESPECIALIDAD</th>                          
+                                <th>VEHI-ID</th>
+                                <th>CLIE-ID</th>                                
+                                <th>N° MARCA</th>   
+                                <th>MODELO</th>
+                                <th>N°PLACA</th> 
+                                <th>TIPO-VEHIVULO</th>
                                 <th>OPCION</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="empleado : ${lista_empleados}">
-                                <td th:text="${empleado.persona.pers_identificacion}"></td>
-                                <td th:text="${empleado.persona.pers_nombre}"></td>
-                                <td th:text="${empleado.persona.pers_apellido}"></td>
-                                <td th:text="${empleado.maes_tiesp.maes_nombrelargo}"></td>
-
+                            <tr th:each="vehiculo : ${lista_vehiculos}">
+                                <td th:text="${vehiculo.vehi_id}"></td>
+                                <td text="#"></td>
+                                <td th:text="${vehiculo.vehi_marca}"></td>
+                                <td th:text="${vehiculo.vehi_modelo}"></td>
+                                <td th:text="${vehiculo.vehi_nplaca}"></td>
+                                <td text="#"></td>
                                 <td>
-                                    <a th:href="@{'/empleados/editar' + '/' + ${empleado.empl_id}}" class='btn btn-info'>EDITAR</a>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <a th:href="@{'/empleados/eliminar' + '/' + ${empleado.empl_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">KILLER</a>
+                                    <a th:href="@{'/vehiculos/editar' + '/' + ${vehiculo.vehi_id}}" class='btn btn-info'>EDITAR</a>
+                                    &nbsp;
+                                    <a th:href="@{'/vehiculos/eliminar' + '/' + ${vehiculo.vehi_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este vehiculo?')">KILLER</a>
+                                    &nbsp;
+                                    <a th:href="" class='btn btn-info'>DETALLE</a>
                                 </td>
                             </tr>
                         </tbody>
