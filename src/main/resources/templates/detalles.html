@@ -63,8 +63,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <td text="#"></td>
                                 <td>
                                     <a th:href="@{'/vehiculos/editar' + '/' + ${vehiculo.vehi_id}}" class='btn btn-info'>EDITAR</a>
-                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;
                                     <a th:href="@{'/vehiculos/eliminar' + '/' + ${vehiculo.vehi_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este vehiculo?')">KILLER</a>
+                                    &nbsp;
+                                    <a th:href="" class='btn btn-info'>DETALLE</a>
                                 </td>
                             </tr>
                         </tbody>

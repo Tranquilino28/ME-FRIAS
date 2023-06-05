@@ -8,9 +8,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title th:text="${title}"></title>
 
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/st_main_head_foter.css">
-        <link rel="stylesheet" type="text/css" href="/css/st_vehiclientes.css">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="/css/st_regvehiculos1.css">
+        <link rel="stylesheet" type="text/css" href="/css/st_main_head_foter.css"> 
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
     </head>
     <body>
@@ -28,46 +30,60 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </ul>
             </nav>
         </header>
-        <div class="testbox">
-            <h1>FACTURA DE COBRO</h1> 
-            <div class="vehicle-card">
-                <h2>Vehículo</h2>
-                <p>Marca: Toyota</p>
-                <p>Modelo: Corolla</p>
-                <p>Número de placa: ABC123</p>
-            </div>
+        <section class="contend text-center">
+            <h1 th:text="${saludo}"></h1>
+            <p>¡Aquí podrás encontrar toda la información que necesitas!</p>
+        </section>
 
-            <div class="client-card">
-                <h2>Cliente</h2>
-                <p>Nombre: Juan Pérez</p>
-                <p>Dirección: Calle 123, Ciudad</p>
-                <p>Teléfono: 123456789</p>
-
+        <div class="container text-center testbox">
+            <div class="text-secondary">
+                <h3 th:if="${vehi_id == null}">Añade un vehiculo aqui en este form</h3>
+                <h3 th:unless="${vehi_id == null}">Editar a un vehiculo aqui en este form</h3>
             </div>
-            <div class="detalle-card">
-                <h2>Detalle del servicio de Mantenimiento Electromecanico</h2>
-                <p>Detalle Reparacion: Se le realizo el matenimiento preventivo ya qeu el vehiculo presentaba 
-                    fallas en el motor, ruido en las correas</p>
-                <p>Dirección: Calle 123, Ciudad</p>
-                <p>Teléfono: 123456789</p>
+            <form th:action="@{/vehiculos/guardar}" th:object="${vehiculo}" method="post" style="max-width: 600px; margin:0 auto;" >
+                <input type="hidden" th:field="*{vehi_id}" th:value="vehiculo.vehi_id">
+                <div class="m-3">
 
-            </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">MARCA : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{vehi_marca}" class="form-control" required >   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">MODELO : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{vehi_modelo}" class="form-control" required >   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">N° PLACA : </label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{vehi_nplaca}" class="form-control" required >   
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">TIPO VEHICULO : </label>
+                        <div class="col-sm-8">
+                            <select id="categoria" name="tipo_vehiculo" >
+                                <th:block th:each="maestra : ${maestraTVehiculo}">
+                                    <option th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}"></option>
+                                </th:block>
+                            </select>                           
+                        </div>
+                    </div>
+
+                    <div class="text-center p">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <button onclick="mostrarFactura()">Ver Factura</button>
-
-        <div id="facturaPopup" class="popup">
-            <div class="popup-content">
-                <span class="close" onclick="cerrarFactura()">&times;</span>
-                <!-- Contenido de la factura -->
-                <h2>Factura</h2>
-                <p>Fecha: 31 de mayo de 2023</p>
-                <p>Cliente: Juan Pérez</p>
-                <p>Total: $100.00</p>
-                <!-- Agrega más información de la factura aquí -->
-            </div>
-        </div>
-
-
+        
+              
+        
         <footer>
             <div class="container-footer w-container">
                 <div class="w-row">
@@ -140,6 +156,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
 
         </footer>
-        <script src="/script/sc_vehiclientes.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
