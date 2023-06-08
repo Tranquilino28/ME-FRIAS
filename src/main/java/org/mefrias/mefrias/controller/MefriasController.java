@@ -27,21 +27,46 @@ public class MefriasController {
     @Autowired
     private Empl_interRepository emplRepository;
 
+    /**
+     * 
+     * se muestra una pagina temporal
+     * 
+     * 
+     * @param model
+     * @return 
+     */
+    @GetMapping({"temp_index", "ti", "tpi"})
+    public String temp_index(Model model) {
+        model.addAttribute("title", "ME-FRIAS login");
+
+        return "/tempindex/temp_index";
+    }
+    
+    
+    
+    /**
+     * el espacio de arriba es temporal 
+     * 
+     * @param model
+     * @return 
+     */
+    
     @GetMapping({"/index", "/", "login"})
     public String index(Model model) {
         model.addAttribute("title", "ME-FRIAS login");
 
         return "index";
     }
+    
     @GetMapping({"/temp", "/t", "temporal"})
     public String temp(Model model) {
-        model.addAttribute("title", "ME-FRIAS login");
+        model.addAttribute("title", "ME-FRIAS temporal");
 
         return "temp";
     }
     @GetMapping({"/vehiclientes", "/vc", "vecli"})
     public String vehiclientes(Model model) {
-        model.addAttribute("title", "ME-FRIAS login");
+        model.addAttribute("title", "ME-FRIAS vehiclientes");
 
         return "vehiclientes";
     }

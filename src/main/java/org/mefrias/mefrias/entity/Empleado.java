@@ -33,7 +33,7 @@ public class Empleado implements Serializable {
     private Persona persona;
 
     @OneToOne()
-    @JoinColumn(name = "maes_id")
+    @JoinColumn(name = "maes_tiesp",referencedColumnName = "maes_id")
     private Maestra maes_tiesp;
 
     public Empleado() {

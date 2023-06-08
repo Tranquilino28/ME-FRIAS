@@ -42,7 +42,7 @@ public class Detalle implements Serializable {
     private Maestra deta_fechasalida;
 
     @ManyToOne
-    @JoinColumn(name = "maes_id")
+    @JoinColumn(name = "maes_tiser",referencedColumnName = "maes_id")
     private Maestra maes_tiser;
 
     @ManyToOne

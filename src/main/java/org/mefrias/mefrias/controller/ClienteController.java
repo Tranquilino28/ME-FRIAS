@@ -80,22 +80,16 @@ public class ClienteController {
             @RequestParam("tipo_identificacion") Integer clieMaes_tiid,
             @RequestParam("tipo_sexo") Integer clieMaes_tise,
             @RequestParam("tipo_rol") Integer clieMaes_tirol) {
-        /*/ Verifica si la persona ya existe en la base de datos
-        if (persona.getPers_id()!= null) {
-            // Persona ya existe, simplemente crea el cliente y guárdalo
-            Cliente cliente = new Cliente(persona);
-            clieRepository.save(cliente);
-        } else {
-         */ // Persona es una instancia transitoria, guárdala primero y luego crea el cliente
+        
         clienteform.getPersona().setMaes_ties(maesRepository.findById(clieMaes_ties).get());
         clienteform.getPersona().setMaes_tiid(maesRepository.findById(clieMaes_tiid).get());
         clienteform.getPersona().setMaes_tise(maesRepository.findById(clieMaes_tise).get());
         clienteform.getPersona().setMaes_tirol(maesRepository.findById(clieMaes_tirol).get());
         
-        persRepository.save(clienteform.getPersona()); // Guarda la persona en la base de datos
+        persRepository.save(clienteform.getPersona()); 
         
         clieRepository.save(clienteform);
-        //}
+       
 
         return "redirect:/clientes";
     }

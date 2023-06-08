@@ -25,6 +25,7 @@ body {
 .login-container h1 {
 	font-size: 36px;
 	margin-bottom: 30px;
+        color: white;
 }
 .login-container img {
     width: 10 px;
