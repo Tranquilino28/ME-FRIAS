@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,25 +78,48 @@ public class ClienteController {
             @RequestParam("tipo_estado") Integer clieMaes_ties,
             @RequestParam("tipo_identificacion") Integer clieMaes_tiid,
             @RequestParam("tipo_sexo") Integer clieMaes_tise,
-            @RequestParam("tipo_rol") Integer clieMaes_tirol) {
-        
-        clienteform.getPersona().setMaes_ties(maesRepository.findById(clieMaes_ties).get());
-        clienteform.getPersona().setMaes_tiid(maesRepository.findById(clieMaes_tiid).get());
-        clienteform.getPersona().setMaes_tise(maesRepository.findById(clieMaes_tise).get());
-        clienteform.getPersona().setMaes_tirol(maesRepository.findById(clieMaes_tirol).get());
-        
-        persRepository.save(clienteform.getPersona()); 
-        
-        clieRepository.save(clienteform);
-       
+            @RequestParam("tipo_rol") Integer clieMaes_tirol
+    ) {
 
+        if (clienteform.getClie_id() != null) {
+            Cliente clienteExistente = clieRepository.findById(clienteform.getClie_id()).orElse(null);
+
+            if (clienteExistente != null) {
+
+                clienteExistente.getPersona().setPers_identificacion(clienteform.getPersona().getPers_identificacion());
+
+                clienteExistente.getPersona().setPers_nombre(clienteform.getPersona().getPers_nombre());
+                clienteExistente.getPersona().setPers_apellido(clienteform.getPersona().getPers_apellido());
+                clienteExistente.getPersona().setPers_fechanacimiento(clienteform.getPersona().getPers_fechanacimiento());
+                clienteExistente.getPersona().setPers_direccion(clienteform.getPersona().getPers_direccion());
+                clienteExistente.getPersona().setPers_email(clienteform.getPersona().getPers_email());
+                clienteExistente.getPersona().setPers_contrasena(clienteform.getPersona().getPers_contrasena());
+                clienteExistente.getPersona().setMaes_tiid(maesRepository.findById(clieMaes_tiid).get());
+                clienteExistente.getPersona().setMaes_tise(maesRepository.findById(clieMaes_tise).get());
+                clienteExistente.getPersona().setMaes_tirol(maesRepository.findById(clieMaes_tirol).get());
+                clienteExistente.getPersona().setMaes_ties(maesRepository.findById(clieMaes_ties).get());
+
+                // Guardar los cambios en la base de datos
+                clieRepository.save(clienteExistente);
+            }
+        } else {
+            clienteform.getPersona().setMaes_ties(maesRepository.findById(clieMaes_ties).get());
+            clienteform.getPersona().setMaes_tiid(maesRepository.findById(clieMaes_tiid).get());
+            clienteform.getPersona().setMaes_tise(maesRepository.findById(clieMaes_tise).get());
+            clienteform.getPersona().setMaes_tirol(maesRepository.findById(clieMaes_tirol).get());
+
+            persRepository.save(clienteform.getPersona());
+
+            clieRepository.save(clienteform);
+        }
         return "redirect:/clientes";
     }
 
     @GetMapping({"/clientes/editar/{clie_id}"})
     public String mostrarFormularioUpdatingCliente(@PathVariable("clie_id") Integer clie_id, Model model) {
         Cliente cliente = clieRepository.findById(clie_id).get();
- List<Maestra> listaMaesTRol = maesRepository.maesTipoRol();
+
+        List<Maestra> listaMaesTRol = maesRepository.maesTipoRol();
         List<Maestra> listaMaesTSexo = maesRepository.maesTipoSexo();
         List<Maestra> listaMaesTEstado = maesRepository.maesTipoEstado();
         List<Maestra> listaMaesTIdentificacion = maesRepository.maesTipoIdentificasion();
@@ -106,10 +128,10 @@ public class ClienteController {
         model.addAttribute("maestraTSexo", listaMaesTSexo);
         model.addAttribute("maestraTEstado", listaMaesTEstado);
         model.addAttribute("maestraTIdentificacion", listaMaesTIdentificacion);
-       
+
 //Persona persona = cliente.getPersona();
         model.addAttribute("cliente", cliente);
-       // model.addAttribute("persona", persona);
+        // model.addAttribute("persona", persona);
 
         return "regclientes";
     }

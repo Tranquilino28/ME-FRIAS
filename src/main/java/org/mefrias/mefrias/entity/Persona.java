@@ -13,7 +13,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.io.Serializable;
+import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -30,35 +34,39 @@ public class Persona implements Serializable {
     @Column(length = 15, nullable = false)
     private long pers_identificacion;
 
-    @Column(length = 15, nullable = false)
+    @Column(length = 50, nullable = false)
     private String pers_nombre;
 
-    @Column(length = 15, nullable = false)
+    @Column(length = 50, nullable = false)
     private String pers_apellido;
 
-    @Column(length = 100, nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date pers_fechanacimiento;
+
+    @Column(length = 200)
     private String pers_direccion;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String pers_email;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 400, nullable = false)
     private String pers_contrasena;
 
     @ManyToOne
-    @JoinColumn(name = "maes_tiid",referencedColumnName = "maes_id")
+    @JoinColumn(name = "maes_tiid", referencedColumnName = "maes_id")
     private Maestra maes_tiid;
 
     @ManyToOne
-    @JoinColumn(name = "maes_tise",referencedColumnName = "maes_id")
+    @JoinColumn(name = "maes_tise", referencedColumnName = "maes_id")
     private Maestra maes_tise;
 
     @ManyToOne
-    @JoinColumn(name = "maes_tirol",referencedColumnName = "maes_id")
+    @JoinColumn(name = "maes_tirol", referencedColumnName = "maes_id")
     private Maestra maes_tirol;
 
     @ManyToOne
-    @JoinColumn(name = "maes_ties",referencedColumnName = "maes_id")
+    @JoinColumn(name = "maes_ties", referencedColumnName = "maes_id")
     private Maestra maes_ties;
 
     public Persona() {
@@ -68,11 +76,12 @@ public class Persona implements Serializable {
         return pers_id;
     }
 
-    public Persona(int pers_id, long pers_identificacion, String pers_nombre, String pers_apellido, String pers_direccion, String pers_email, String pers_contrasena, Maestra maes_tiid, Maestra maes_tise, Maestra maes_tirol, Maestra maes_ties) {
+    public Persona(int pers_id, long pers_identificacion, String pers_nombre, String pers_apellido, Date pers_fechanacimiento, String pers_direccion, String pers_email, String pers_contrasena, Maestra maes_tiid, Maestra maes_tise, Maestra maes_tirol, Maestra maes_ties) {
         this.pers_id = pers_id;
         this.pers_identificacion = pers_identificacion;
         this.pers_nombre = pers_nombre;
         this.pers_apellido = pers_apellido;
+        this.pers_fechanacimiento = pers_fechanacimiento;
         this.pers_direccion = pers_direccion;
         this.pers_email = pers_email;
         this.pers_contrasena = pers_contrasena;
@@ -82,10 +91,11 @@ public class Persona implements Serializable {
         this.maes_ties = maes_ties;
     }
 
-    public Persona(long pers_identificacion, String pers_nombre, String pers_apellido, String pers_direccion, String pers_email, String pers_contrasena, Maestra maes_tiid, Maestra maes_tise, Maestra maes_tirol, Maestra maes_ties) {
+    public Persona(long pers_identificacion, String pers_nombre, String pers_apellido, Date pers_fechanacimiento, String pers_direccion, String pers_email, String pers_contrasena, Maestra maes_tiid, Maestra maes_tise, Maestra maes_tirol, Maestra maes_ties) {
         this.pers_identificacion = pers_identificacion;
         this.pers_nombre = pers_nombre;
         this.pers_apellido = pers_apellido;
+        this.pers_fechanacimiento = pers_fechanacimiento;
         this.pers_direccion = pers_direccion;
         this.pers_email = pers_email;
         this.pers_contrasena = pers_contrasena;
@@ -117,6 +127,14 @@ public class Persona implements Serializable {
 
     public void setPers_apellido(String pers_apellido) {
         this.pers_apellido = pers_apellido;
+    }
+
+    public Date getPers_fechanacimiento() {
+        return pers_fechanacimiento;
+    }
+
+    public void setPers_fechanacimiento(Date pers_fechanacimiento) {
+        this.pers_fechanacimiento = pers_fechanacimiento;
     }
 
     public String getPers_direccion() {

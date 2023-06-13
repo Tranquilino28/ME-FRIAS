@@ -1,0 +1,6 @@
+.carousel-inner .item img {
+    max-height: 450px; /* Ajusta la altura máxima deseada */
+    min-height: 450px;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+

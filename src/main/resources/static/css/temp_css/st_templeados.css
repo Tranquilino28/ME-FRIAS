@@ -1,0 +1,51 @@
+header {
+    background-image: linear-gradient(to right, #FF4F4F, #4F7AFF);
+    background-color: #2d6187;
+    color: #fff;
+    padding: 20px;
+    
+}
+.logo-container img {
+    max-height: 50px;
+    max-width: 50px;
+    float: left;
+    margin-right: 20px;
+
+}
+
+.custom-font {
+    font-family: Arial, sans-serif;
+    /* Cambia la fuente del texto a Arial */
+}
+.sliderbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.sliderbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sliderbar li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.sliderbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-out;
+}
+
+.sliderbar a:hover {
+    color: #FFDB58;
+}

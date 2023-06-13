@@ -63,7 +63,7 @@ public class EmpleadoController {
         model.addAttribute("maestraTRol", listaMaesTRol);
         model.addAttribute("maestraTSexo", listaMaesTSexo);
         model.addAttribute("maestraTEstado", listaMaesTEstado);
-        model.addAttribute("maestraTIdentificasion", listaMaesTIdentificacion);
+        model.addAttribute("maestraTIdentificacion", listaMaesTIdentificacion);
         model.addAttribute("maestraTEspecialidad", listaMaesTEspecialidad);
 
         model.addAttribute("empleado", new Empleado());
@@ -80,21 +80,46 @@ public class EmpleadoController {
     @PostMapping("/empleados/guardar")
     public String saveEmpleado(
             Empleado empleadoform,
-            @RequestParam("especialidad") Integer emplMaes_tiesp) {
+            @RequestParam("tipo_especialidad") Integer emplMaes_tiesp,
+            @RequestParam("tipo_estado") Integer emplMaes_ties,
+            @RequestParam("tipo_identificacion") Integer emplMaes_tiid,
+            @RequestParam("tipo_sexo") Integer emplMaes_tise,
+            @RequestParam("tipo_rol") Integer emplMaes_tirol
+    ) {
 
-        //Maestra maestra = maesRepository.findById(emplMaes_tiesp).get();
-        /*/ Verifica si la persona ya existe en la base de datos
-        if (persona.getPers_id()!= null) {
-            // Persona ya existe, simplemente crea el cliente y guárdalo
-            Cliente cliente = new Cliente(persona);
-            clieRepository.save(cliente);
+        if (empleadoform.getEmpl_id() != null) {
+            Empleado empleadoExistente = emplRepository.findById(empleadoform.getEmpl_id()).orElse(null);
+
+            if (empleadoExistente != null) {
+
+                empleadoExistente.getPersona().setPers_identificacion(empleadoform.getPersona().getPers_identificacion());
+
+                empleadoExistente.getPersona().setPers_nombre(empleadoform.getPersona().getPers_nombre());
+                empleadoExistente.getPersona().setPers_apellido(empleadoform.getPersona().getPers_apellido());
+                empleadoExistente.getPersona().setPers_fechanacimiento(empleadoform.getPersona().getPers_fechanacimiento());
+                empleadoExistente.getPersona().setPers_direccion(empleadoform.getPersona().getPers_direccion());
+                empleadoExistente.getPersona().setPers_email(empleadoform.getPersona().getPers_email());
+                empleadoExistente.getPersona().setPers_contrasena(empleadoform.getPersona().getPers_contrasena());
+                empleadoExistente.getPersona().setMaes_tiid(maesRepository.findById(emplMaes_tiid).get());
+                empleadoExistente.getPersona().setMaes_tise(maesRepository.findById(emplMaes_tise).get());
+                empleadoExistente.getPersona().setMaes_tirol(maesRepository.findById(emplMaes_tirol).get());
+                empleadoExistente.getPersona().setMaes_ties(maesRepository.findById(emplMaes_ties).get());
+
+                empleadoExistente.setMaes_tiesp(maesRepository.findById(emplMaes_tiesp).get());
+                // Guardar los cambios en la base de datos
+                emplRepository.save(empleadoExistente);
+            }
         } else {
-         */ // Persona es una instancia transitoria, guárdala primero y luego crea el cliente
-        empleadoform.setMaes_tiesp(maesRepository.findById(emplMaes_tiesp).get());
-        persRepository.save(empleadoform.getPersona()); // Guarda la persona en la base de datos
+            empleadoform.getPersona().setMaes_ties(maesRepository.findById(emplMaes_ties).get());
+            empleadoform.getPersona().setMaes_tiid(maesRepository.findById(emplMaes_tiid).get());
+            empleadoform.getPersona().setMaes_tise(maesRepository.findById(emplMaes_tise).get());
+            empleadoform.getPersona().setMaes_tirol(maesRepository.findById(emplMaes_tirol).get());
+            empleadoform.setMaes_tiesp(maesRepository.findById(emplMaes_ties).get());
+            
+            persRepository.save(empleadoform.getPersona());
 
-        emplRepository.save(empleadoform);
-        //}
+            emplRepository.save(empleadoform);
+        }
 
         return "redirect:/empleados";
     }
@@ -102,7 +127,7 @@ public class EmpleadoController {
     @GetMapping({"/empleados/editar/{empl_id}"})
     public String mostrarFormularioUpdatingEmpleado(@PathVariable("empl_id") Integer empl_id, Model model) {
         model.addAttribute("title", "ME-FRIAS editar-empleado");
-        
+
         Empleado empleado = emplRepository.findById(empl_id).get();
         //Persona persona = cliente.getPersona();
 
@@ -115,7 +140,7 @@ public class EmpleadoController {
         model.addAttribute("maestraTRol", listaMaesTRol);
         model.addAttribute("maestraTSexo", listaMaesTSexo);
         model.addAttribute("maestraTEstado", listaMaesTEstado);
-        model.addAttribute("maestraTIdentificasion", listaMaesTIdentificacion);
+        model.addAttribute("maestraTIdentificacion", listaMaesTIdentificacion);
 
         model.addAttribute("maestraTEspecialidad", listaMaesTEspecialidad);
 
@@ -124,7 +149,11 @@ public class EmpleadoController {
 
         return "regempleados";
     }
+@GetMapping({"/empleados/eliminar/{empl_id}"})
+    public String deleteCliente(@PathVariable("empl_id") Integer empl_id, Model model) {
+        emplRepository.deleteById(empl_id);
 
+        return "redirect:/empleados";
+    }
     
-
 }

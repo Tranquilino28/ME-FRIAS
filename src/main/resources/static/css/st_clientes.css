@@ -1,4 +1,30 @@
 .contend_table{
-    max-height: 100px;
-   margin-bottom: 350px;
+    max-height: 80%;
+    margin-bottom: 350px;
+    overflow-y: auto;
+    
+}
+
+th {
+    background-color: #a9a9a9;
+    color: #FFFFFF;
+}
+
+.div_button {
+
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+button{
+    width: 100px;
+}
+.table-bordered{
+    overflow-y: auto;
+
+}
+
+.texto-largo {
+    max-width: 150px; /* ajusta el valor según tus necesidades */
 }

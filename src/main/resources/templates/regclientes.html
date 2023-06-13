@@ -12,10 +12,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link rel="stylesheet" type="text/css" href="/css/st_temp.css">
         <link rel="stylesheet" type="text/css" href="/css/st_regclientes.css">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <header>
@@ -32,164 +32,108 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </ul>
             </nav>
         </header>
-        <section class="contend text-center">
-            <h1 th:text="${saludo}"></h1>
-            <p>¡Aquí podrás encontrar toda la información que necesitas!</p>
-        </section>
 
-        <div class="container text-center">
-            <div class="text-secondary">
-                <h3 th:if="${clie_id == null}">Añade un empleado aqui en este form</h3>
-                <h3 th:unless="${clie_id == null}">Editar a un Empleado aqui en este form</h3>
-            </div>
-            <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post" style="max-width: 600px; margin:0 auto;" >
-                <input type="hidden" th:field="*{clie_id}" th:value="cliente.clie_id">
-                <div class="m-3">
 
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">TIPO ESTADO : </label>
-                        <div class="col-sm-8">
-                            <select id="categoria" name="tipo_estado" >
-                                <th:block th:each="maestra : ${maestraTEstado}">
-                                    <option th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}"></option>
-                                </th:block>
-                            </select>                           
-                        </div>
-
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">TIPO IDENTIFICACION : </label>
-                        <div class="col-sm-8">
-                            <select id="categoria" name="tipo_identificacion" >
-                                <th:block th:each="maestra : ${maestraTIdentificacion}">
-                                    <option th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}"></option>
-                                </th:block>
-                            </select>                           
-                        </div>
-
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">N° IDENTIFICACION : </label>
-                        <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_identificacion}" class="form-control" required >   
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">NOMBRES : </label>
-                        <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_nombre}" class="form-control" required >   
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">APELLIDOS : </label>
-                        <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_apellido}" class="form-control" required >   
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">SELECCIONE SEXO : </label>
-                        <div class="col-sm-8">
-                            <select id="categoria" name="tipo_sexo" >
-                                <th:block th:each="maestra : ${maestraTSexo}">
-                                    <option th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}"></option>
-                                </th:block>
-                            </select>                           
-                        </div>
-
-                    </div>
-
-                    <div class="form-group row" >
-                        <label class="col-form-label col-sm-4">DIRECCION : </label>
-                        <div class="col-sm-8">
-                            <input type="text" th:field="*{persona.pers_direccion}" class="form-control" >   
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-4">SELECCIONE SU ROL  : </label>
-                        <div class="col-sm-8">
-                            <select class="form-select" id="categoria" name="tipo_rol">
-                                <th:block th:each="maestra : ${maestraTRol}">
-                                    <option th:text="CLIENTE" th:value="5"></option>
-                                </th:block>
-                            </select>                           
-                        </div>
-
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">EMAIL</label>
-                        <div class="col-sm-10">
-                            <input type="text" th:field="*{persona.pers_email}" class="form-control" id="staticEmail" placeholder="email@example.com" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">PASSWORD</label>
-                        <div class="col-sm-10">
-                            <input type="password" th:field="*{persona.pers_contrasena}" class="form-control" id="inputPassword" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <div class="text-center p">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="testbox">
-            <h1>REGISTRO DE CLIENTE</h1>
+            <section class="title_uid">
+                <h3 th:if="${clie_id == null}">REGISTRAR NUEVO CLIENTE</h3>
+                <h3 th:unless="${clie_id == null}">ACTUALIZANDO AL CLIENTE : <h2>&nbsp;
+                        <span>COD:</span>
+                        &nbsp;
+                        <span th:text="${cliente.persona.pers_identificacion}"></span>
+                        &nbsp;
+                        <span th:text="${cliente.persona.pers_nombre}"></span>
+                        &nbsp;
+                        <span th:text="${cliente.persona.pers_apellido}"></span></h2>
+                </h3>
+            </section>
 
             <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+                <input type="hidden" th:field="*{clie_id}" th:value="cliente.clie_id">
+                <div th:if="${clie_id == null}">
+                    <input  name="tipo_estado"  type="hidden" th:value="17">
+                </div>
+                <div  th:unless="${clie_id == null}">
 
+
+
+                    <label id="icon" for="name"><i class="icon-shield "></i></label>
+
+                    <select id="categoria" name="tipo_estado">
+                        <option value="">Seleccione el Estado</option>
+                        <option th:each="maestra : ${maestraTEstado}"
+                                th:text="${maestra.maes_nombrelargo}"
+                                th:value="${maestra.maes_id}"
+                                th:selected="${maestra.maes_id == cliente.persona.maes_ties.maes_id}"></option>
+                    </select>
+
+                </div>
                 <hr>
 
                 <div>
                     <label id="icon" for="name"><i class="icon-envelope "></i></label>
-                    <input type="text" name="name" id="name" placeholder="Nombres" required/>
+                    <input type="text" th:field="*{persona.pers_nombre}" name="name" id="name" placeholder="Nombres" required/>
                     <label id="icon" for="name"><i class="icon-user"></i></label>
-                    <input type="text" name="name" id="name" placeholder="Apellidos" required/>
+                    <input type="text" th:field="*{persona.pers_apellido}" name="name" id="name" placeholder="Apellidos" required/>
                     <label id="icon" for="name"><i class="icon-shield"></i></label>
-                    <input type="date" name="name" id="name" min="1970-01-01" max="2030-01-01" placeholder="Fecha Nacimiento" required>
+                    <input type="date" th:field="*{persona.pers_fechanacimiento}" name="name" id="name" min="1970-01-01" max="2030-01-01" placeholder="Fecha Nacimiento" required >
 
                 </div>
-                <div>
-                   
+                <div class="form_direccion">
+                    <label id="icon" for="name"><i class="icon-envelope "></i></label>
+                    <input type="text" th:field="*{persona.pers_direccion}" name="name" id="name" placeholder="Direccion, Barrio, Ciudad" required/>
+
+
+                </div>
+
+                <div class="tipos_mide">
+
                     <label id="icon" for="name"><i class="icon-shield "></i></label>
                     <select id="categoria" name="tipo_identificacion" >
-                        
+                        <option value="">Tipo de Identificasion</option>
                         <th:block th:each="maestra : ${maestraTIdentificacion}">
-                            <option th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}"></option>
+                            <option th:if="${clie_id == null}" th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}" ></option>
+                            <option th:unless="${clie_id == null}" th:text="${maestra.maes_nombrelargo}"  th:value="${maestra.maes_id}" th:selected="${maestra.maes_id == cliente.persona.maes_tiid.maes_id}"></option>
+
                         </th:block>
                     </select> 
-                    
+
                     <label id="icon" for="name"><i class="icon-shield "></i></label>
                     <select id="categoria" name="tipo_sexo" >
-                        
+                        <option value="">Seleccione su Sexo</option>
                         <th:block th:each="maestra : ${maestraTSexo}">                            
-                            <option  th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}"></option>
+                            <option th:if="${clie_id == null}" th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}" ></option>
+                            <option th:unless="${clie_id == null}" th:text="${maestra.maes_nombrelargo}" th:value="${maestra.maes_id}" th:selected="${maestra.maes_id == cliente.persona.maes_tise.maes_id}"></option>
                         </th:block>
-                        
+
                     </select> 
                     <label id="icon" for="name"><i class="icon-shield "></i></label>
-                    <select id="categoria" name="tipo_rol" >                        
-                            <option th:text="CLIENTE"  th:value="5"></option>
-                        
-                    </select> 
+                    <select id="categoria" name="tipo_rol">
+                        <option value="">Seleccione Rol</option>
+                        <option th:if="${clie_id == null}" th:text="CLIENTE" th:value="5"></option>
+                        <th:block th:unless="${clie_id == null}" th:each="maestra : ${maestraTRol}">
+                            <option th:text="${maestra.maes_nombrelargo}"
+                                    th:value="${maestra.maes_id}"
+                                    th:selected="${maestra.maes_id == cliente.persona.maes_tirol.maes_id}"></option>
+                        </th:block>
+                    </select>
                 </div>
                 <div>
 
                     <label id="icon" for="name"><i class="icon-envelope "></i></label>
-                    <input type="text" name="name" id="name" placeholder="N° Identificasion" required/>
+                    <input type="text" th:field="*{persona.pers_identificacion}" name="name" id="name" placeholder="N° Identificasion" required/>
                     <label id="icon" for="name"><i class="icon-user"></i></label>
-                    <input type="text" name="name" id="name" placeholder="Email" required/>
+                    <input type="text" th:field="*{persona.pers_email}" name="name" id="name" placeholder="Email" required/>
+
                     <label id="icon" for="name"><i class="icon-shield"></i></label>
-                    <input type="password" name="name" id="name" placeholder="Contraseña" required/>                    
+
+                    <input th:if="${clie_id == null}" type="password" th:field="*{persona.pers_contrasena}" name="name" id="name" placeholder="Contraseña" required/>                    
+                    <input th:unless="${clie_id == null}" type="password" th:field="*{persona.pers_contrasena}" name="name" id="name" placeholder="Contraseña" required/>                    
+
                 </div>
 
-
-
-                
                 <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
-                <a type="submit" class="button">Registrar</a>
+                <a type="submit"><button>Registrar</button></a>
 
 
             </form>

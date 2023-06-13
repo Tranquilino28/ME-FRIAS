@@ -8,7 +8,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title th:text="${title}"></title>
 
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/st_main_head_foter.css">
         <link rel="stylesheet" type="text/css" href="/css/st_empleados.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">       
     </head>
@@ -29,41 +31,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </header>
         <section class="contenido text-center">
             <h1 th:text="${saludo}"></h1>
-            <a th:href="@{/empleados/nuevo}"><p>¡Click aqui para añadir nuevos empleados!</p></a>
-        </section>
-        <div class="container text-center">
-            <div>               
-                <br>
-                <div>
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Nº IDENTIFICASION</th>   
-                                <th>NOMBRE</th>
-                                <th>APELLIDO</th> 
-                                <th>ESPECIALIDAD</th>                          
-                                <th>OPCION</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="empleado : ${lista_empleados}">
-                                <td th:text="${empleado.persona.pers_identificacion}"></td>
-                                <td th:text="${empleado.persona.pers_nombre}"></td>
-                                <td th:text="${empleado.persona.pers_apellido}"></td>
-                                <td th:text="${empleado.maes_tiesp.maes_nombrelargo}"></td>
 
-                                <td>
-                                    <a th:href="@{'/empleados/editar' + '/' + ${empleado.empl_id}}" class='btn btn-info'>EDITAR</a>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <a th:href="@{'/empleados/eliminar' + '/' + ${empleado.empl_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">KILLER</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </section>
+
+        <div class="container text-center ">
+            <div>
+                <div id="loader" class="loader"></div>
+
+                <div  class="contend_table ">
+
+                    
+
+                        <table id="miTabla" class="table table-bordered hidden">
+
+                            <div class="div_button lef hidden">
+                                <a th:href="@{/empleados/nuevo}"><button >Registrar</button></a>
+                            </div>
+                            
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ROL</th>
+                                    <th>ESTADO</th>
+                                    <th>Nº IDENTIFICACION</th>   
+                                    <th>NOMBRE</th>
+                                    <th>APELLIDO</th> 
+                                    <th>ESPECIALIDAD</th>                          
+                                    <th>OPCION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="empleado : ${lista_empleados}">
+                                    <td th:text="${empleado.persona.maes_tirol.maes_nombrelargo}"></td>
+                                    <td th:text="${empleado.persona.maes_ties.maes_nombrelargo}"></td>
+                                    <td th:text="${empleado.persona.pers_identificacion}"></td>
+                                    <td th:text="${empleado.persona.pers_nombre}"></td>
+                                    <td th:text="${empleado.persona.pers_apellido}"></td>
+                                    <td th:text="${empleado.maes_tiesp.maes_nombrelargo}"></td>
+
+                                    <td>
+                                        <a th:href="@{'/empleados/editar' + '/' + ${empleado.empl_id}}" class='btn btn-info'>EDITAR</a>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a th:href="@{'/empleados/eliminar' + '/' + ${empleado.empl_id}}" class='btn btn-danger' onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">KILLER</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
             </div>
         </div>
-
+        <script src="/script/sc_empleados.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

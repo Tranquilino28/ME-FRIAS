@@ -79,12 +79,7 @@ public class MefriasController {
         return "home";
     }
 
-    @GetMapping({"/empleados/eliminar/{empl_id}"})
-    public String deleteCliente(@PathVariable("empl_id") Integer empl_id, Model model) {
-        emplRepository.deleteById(empl_id);
-
-        return "redirect:/empleados";
-    }
+    
 
     @GetMapping({"/about","info"})
     public String about(Model model) {

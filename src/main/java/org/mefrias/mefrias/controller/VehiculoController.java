@@ -86,6 +86,8 @@ public class VehiculoController {
             Vehiculo vehiculoform,
             @RequestParam("tipo_vehiculo") Integer vehiMaes_tive) {
         
+        
+        
         vehiculoform.setMaes_tive(maesRepository.findById(vehiMaes_tive).get());
 
         vehiRepository.save(vehiculoform);
